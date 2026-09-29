@@ -1,5 +1,6 @@
 import LeftSidebar from "@/components/homepage/news/LeftSidebar";
 import NewsCard from "@/components/homepage/news/NewsCard";
+import RightSidebar from "@/components/homepage/news/RightSidebar";
 import getCategoryById, { getNewsByCategoryId } from "@/lib/data";
 import React from "react";
 
@@ -26,7 +27,8 @@ export default async function CategoryIdPage({params}) {
               </div>
         </div>
         <div className="col-span-3">
-          <h2 className="text-xl font-semibold">This is my Right sidebar</h2>
+          <h2 className="text-xl font-semibold mb-5">This is my Right sidebar</h2>
+          <RightSidebar></RightSidebar>
         </div>
       </div>
     </div>

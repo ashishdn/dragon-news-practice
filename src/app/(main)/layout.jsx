@@ -5,11 +5,11 @@ import Navbar from "@/components/shared/Navbar";
 
 export default function layout({ children }) {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto ">
       <Header></Header>
       <LatestNews></LatestNews>
       <Navbar></Navbar>
-      <main>{children}</main>
+      <main >{children}</main>
     </div>
   );
 }
