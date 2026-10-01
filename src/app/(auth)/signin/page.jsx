@@ -1,16 +1,26 @@
-"use client"
+"use client";
 
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
+import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
 
 export default function SigninPage() {
+  const { register, handleSubmit } = useForm();
 
-  const {register, handleSubmit } = useForm()
-  
-  const handleLogin = (data) =>{
-     console.log(data)
-  }
+  const handleLogin = async (data) => {
+    const { email, password } = data;
 
+    const { data: res, error } = await authClient.signIn.email({
+      email: email,
+      password: password,
+      rememberMe: true,
+      callbackURL: "/",
+    });
+
+    console.log(res, error);
+  };
+
+  // ashishdn@323
 
   return (
     <section className="mx-auto flex min-h-[calc(100vh-12rem)] w-full max-w-md items-center px-4 py-10">
@@ -33,7 +43,7 @@ export default function SigninPage() {
             </label>
             <input
               id="email"
-              {...register("name")}
+              {...register("email")}
               type="email"
               autoComplete="email"
               placeholder="you@example.com"
@@ -78,7 +88,7 @@ export default function SigninPage() {
         </form>
 
         <p className="mt-6 text-center text-sm text-gray-600">
-          Don&apos;t have an account?{' '}
+          Don&apos;t have an account?{" "}
           <Link
             href="/signup"
             className="font-semibold text-red-700 hover:text-red-800"
